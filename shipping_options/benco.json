@@ -1,0 +1,105 @@
+{
+    "default_shipping_method": "2DayGrnd.MT,WY,CO",
+    "shipping_options": {
+      "2DayGrnd.MT,WY,CO": {
+        "shipping": "$7.50",
+        "shipping_method": "2DayGrnd.MT,WY,CO",
+        "shipping_address": ""
+      },
+      "UPS Ground": {
+        "shipping": "$0.00",
+        "shipping_method": "UPS Ground",
+        "shipping_address": ""
+      },
+      "FedEx Ground": {
+        "shipping": "$20.00",
+        "shipping_method": "FedEx Ground",
+        "shipping_address": ""
+      },
+      "Truck": {
+        "shipping": "$80.00",
+        "shipping_method": "Truck",
+        "shipping_address": ""
+      },
+      "OnTrac": {
+        "shipping": "$52.00",
+        "shipping_method": "OnTrac",
+        "shipping_address": ""
+      },
+      "OnTrac WA,OR": {
+        "shipping": "$110.00",
+        "shipping_method": "OnTrac WA,OR",
+        "shipping_address": ""
+      },
+      "OnTrac AZ": {
+        "shipping": "$110.00",
+        "shipping_method": "OnTrac AZ",
+        "shipping_address": ""
+      },
+      "MOVERS": {
+        "shipping": "$110.00",
+        "shipping_method": "MOVERS",
+        "shipping_address": ""
+      },
+      "UPS 2nd Day Air": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS 2nd Day Air",
+        "shipping_address": ""
+      },
+      "UPS Next Day Air": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS Next Day Air",
+        "shipping_address": ""
+      },
+      "UPS Saturday Air": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS Saturday Air",
+        "shipping_address": ""
+      },
+      "UPS 2nd Day Air A.M.": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS 2nd Day Air A.M.",
+        "shipping_address": ""
+      },
+      "UPS 3 Day Select": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS 3 Day Select",
+        "shipping_address": ""
+      },
+      "UPS Next Day Air Saver": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS Next Day Air Saver",
+        "shipping_address": ""
+      },
+      "UPS Atlanta": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS Atlanta",
+        "shipping_address": ""
+      },
+      "UPS VA Beach": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS VA Beach",
+        "shipping_address": ""
+      },
+      "UPS UTAH": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS UTAH",
+        "shipping_address": ""
+      },
+      "UPS Southern CAL": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS Southern CAL",
+        "shipping_address": ""
+      },
+      "UPS S.Carolina": {
+        "shipping": "$110.00",
+        "shipping_method": "UPS S.Carolina",
+        "shipping_address": ""
+      },
+      "FedEx Carolinas": {
+        "shipping": "$110.00",
+        "shipping_method": "FedEx Carolinas",
+        "shipping_address": ""
+      }
+    }
+  }

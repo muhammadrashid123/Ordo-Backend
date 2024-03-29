@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:13
+    ports:
+      - ${POSTGRES_PORT}:5432
+    env_file: .env
+    environment:
+      - PGDATA=/data
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - type: tmpfs
+        target: /data
+    shm_size: 2g
+  redis:
+    image: redis:6.0
+    ports:
+      - ${REDIS_PORT}:6379
+    env_file: .env

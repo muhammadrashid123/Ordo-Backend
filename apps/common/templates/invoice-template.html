@@ -1,0 +1,174 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+{#    <link rel="stylesheet" type="text/css" href="./font/font.css">#}
+</head>
+<body style="margin: 0">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+    <tr>
+        <td style="background-color: #6FDF4B; padding: 9px 0;"></td>
+    </tr>
+    <tr>
+        <td style="width: 100%; background-color: #F8F9FC;">
+            <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; padding: 30px 50px;">
+                <tr>
+                    <td style="text-align: left; font-family: GILROY-BOLD,sans-serif; font-size: 20px; color: #274458;">
+                        Invoice
+                    </td>
+                    <td style="text-align: right;">
+                        <table cellspacing="0" cellpadding="0" border="0" style="margin-left: auto">
+                            <tr>
+                                <td style="padding: 0 16px 0 0">
+                                    <img src="{{ vendor.logo }}" alt=""
+                                         style="width: 72px; height: auto;">
+                                </td>
+                                <td>
+                                    <img src="https://cdn.joinordo.com/emails/images/logo.png" alt=""
+                                         style="width: 84px; height: auto;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"
+                                    style="text-align: right; font-family: GILROY-MEDIUM, sans-serif; font-size: 9px; color: #274458; padding-top: 8px;">
+                                    {{ order_detail.order_date }}
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table cellspacing="0" cellpadding="0" border="0"
+                   style="width: 100%; padding: 50px 50px; background-color: #FFFFFF;">
+                <tr>
+                    <td style="font-family: GILROY-BOLD, sans-serif; font-size: 14px; color: #274458;">Order Detail</td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 24px;">
+                        <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+                            <thead style="background-color: #F8F9FC;">
+                            <tr>
+                                <th style="padding: 9px 14px; text-align: left; font-family: GILROY-BOLD, sans-serif; font-size: 9px; color: #274458; border: 1px solid #F8F9FC;">
+                                    Shipping Address
+                                </th>
+                                <th style="padding: 9px 14px; text-align: left; font-family: GILROY-BOLD, sans-serif; font-size: 9px; color: #274458; border: 1px solid #F8F9FC;">
+                                    Order Details
+                                </th>
+                                <th style="padding: 9px 14px; text-align: left; font-family: GILROY-BOLD, sans-serif; font-size: 9px; color: #274458; border: 1px solid #F8F9FC;">
+                                    Order Summary
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td style="padding: 9px 14px; font-family: GILROY-MEDIUM, sans-serif; font-size: 8px; color: #274458; border: 1px solid #EBEDF3; width: 40%; vertical-align: top;">
+                                    {{ address.shipping_address }}</td>
+                                <td style="padding: 9px 14px; border: 1px solid #EBEDF3; border-left: 0;">
+                                    <p style="margin: 0 0 8px 0; font-size: 9px; color: #274458;">
+                                        <span style="font-family: GILROY-BOLD, sans-serif; font-weight: bold;">Supplier:</span>
+                                        &nbsp;&nbsp;
+                                        <span style="font-family: GILROY-MEDIUM, sans-serif">{{ vendor.name }}</span>
+                                    </p>
+                                    <p style="margin: 0 0 8px 0; font-size: 9px; color: #274458;">
+                                        <span style="font-family: GILROY-BOLD, sans-serif; font-weight: bold;">Order Number:</span>
+                                        &nbsp;&nbsp;
+                                        <span style="font-family: GILROY-MEDIUM, sans-serif">{{ order_detail.order_id }}</span>
+                                    </p>
+                                    <p style="margin: 0 0 8px 0; font-size: 9px; color: #274458;">
+                                        <span style="font-family: GILROY-BOLD, sans-serif; font-weight: bold;">Date of order:</span>
+                                        &nbsp;&nbsp;
+                                        <span style="font-family: GILROY-MEDIUM, sans-serif">{{ order_detail.order_date }}</span>
+                                    </p>
+                                    <p style="margin: 0 0 8px 0; font-size: 9px; color: #274458;">
+                                        <span style="font-family: GILROY-BOLD, sans-serif; font-weight: bold;">Payment:</span>
+                                        &nbsp;&nbsp;
+                                        <span style="font-family: GILROY-MEDIUM, sans-serif">{{ order_detail.payment_method }}</span>
+                                    </p>
+                                </td>
+                                <td style="padding: 9px 14px; border: 1px solid #EBEDF3; border-left: 0;">
+                                    <p style="margin: 0 0 8px 0; font-size: 9px; color: #274458;">
+                                        <span style="font-family: GILROY-BOLD, sans-serif; font-weight: bold;">Total Items:</span>
+                                        &nbsp;&nbsp;
+                                        <span style="font-family: GILROY-MEDIUM, sans-serif">{{ order_detail.total_items }}</span>
+                                    </p>
+                                    <p style="margin: 0 0 8px 0; font-size: 9px; color: #274458;">
+                                        <span style="font-family: GILROY-BOLD, sans-serif; font-weight: bold;">Items Sub-total:</span>
+                                        &nbsp;&nbsp;
+                                        <span style="font-family: GILROY-MEDIUM, sans-serif">{{ order_detail.sub_total_amount }}</span>
+                                    </p>
+                                    <p style="margin: 0 0 8px 0; font-size: 9px; color: #274458;">
+                                        <span style="font-family: GILROY-BOLD, sans-serif; font-weight: bold;">Shipping Cost:</span>
+                                        &nbsp;&nbsp;
+                                        <span style="font-family: GILROY-MEDIUM, sans-serif">{{ order_detail.shipping_amount }}</span>
+                                    </p>
+                                    <p style="margin: 0 0 8px 0; font-size: 9px; color: #274458;">
+                                        <span style="font-family: GILROY-BOLD, sans-serif; font-weight: bold;">Tax:</span>
+                                        &nbsp;&nbsp;
+                                        <span style="font-family: GILROY-MEDIUM, sans-serif">{{ order_detail.tax_amount }}</span>
+                                    </p>
+                                    <p style="margin: 0 0 8px 0; font-size: 9px; color: #274458;">
+                                        <span style="font-family: GILROY-BOLD, sans-serif; font-weight: bold;">Total:</span>
+                                        &nbsp;&nbsp;
+                                        <span style="font-family: GILROY-MEDIUM, sans-serif">{{ order_detail.total_amount }}</span>
+                                    </p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 50px;">
+                        <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+                            <thead style="background-color: #F8F9FC;">
+                            <tr>
+                                <th style="padding: 9px 14px; text-align: left; font-family: GILROY-BOLD, sans-serif; font-size: 9px; color: #274458; border: 1px solid #F8F9FC;">
+                                    Product
+                                </th>
+                                <th style="padding: 9px 14px; text-align: left; font-family: GILROY-BOLD, sans-serif; font-size: 9px; color: #274458; border: 1px solid #F8F9FC;">
+                                    Quantity
+                                </th>
+                                <th style="padding: 9px 14px; text-align: left; font-family: GILROY-BOLD, sans-serif; font-size: 9px; color: #274458; border: 1px solid #F8F9FC;">
+                                    Unit Price
+                                </th>
+                                <th style="padding: 9px 14px; text-align: left; font-family: GILROY-BOLD, sans-serif; font-size: 9px; color: #274458; border: 1px solid #F8F9FC;">
+                                    Status
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for product in products %}
+                                <tr>
+                                    <td style="padding: 9px 14px; border: 1px solid #EBEDF3; max-width: 150px; vertical-align: top; width: 60%;">
+                                        <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+                                            <tr>
+{#                                                <td style="padding-right: 12px;">#}
+{#                                                    <img src="{{ product.product_url }}" alt=""#}
+{#                                                         style="width: 56px; height: 32px;">#}
+{#                                                </td>#}
+                                                <td style="font-family: GILROY-MEDIUM, sans-serif; font-size: 9px; color: #274458;">{{ product.product_name }}
+                                                    | {{ vendor.name }} </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="padding: 9px 14px; border: 1px solid #EBEDF3; border-left: 0; vertical-align: top; font-size: 9px; color: #274458;">{{ product.quantity }}</td>
+                                    <td style="padding: 9px 14px; border: 1px solid #EBEDF3; border-left: 0; vertical-align: top; font-size: 9px; color: #274458;">{{ product.unit_price }}</td>
+                                    <td style="padding: 9px 14px; border: 1px solid #EBEDF3; border-left: 0; vertical-align: top; font-size: 9px; color: #274458;">Shipped</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

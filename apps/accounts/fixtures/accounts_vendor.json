@@ -1,0 +1,165 @@
+[
+    {
+        "model": "accounts.vendor",
+        "pk": 1,
+        "fields": {
+            "slug": "henry_schein",
+            "logo": "https://cdn.joinordo.com/vendors/henry_schein.jpg",
+            "shipping_options": [
+                "UPS Standard Delivery",
+                "Next Day Delivery (extra charge)",
+                "Saturday Delivery (extra charge)",
+                "Next Day 10:30 (extra charge)",
+                "2nd Day Air (extra charge)"
+            ],
+            "name": "Henry Schein",
+            "url": "https://www.henryschein.com/"
+        }
+    },
+    {
+        "model": "accounts.vendor",
+        "pk": 2,
+        "fields": {
+            "slug": "net_32",
+            "logo": "https://cdn.joinordo.com/vendors/net_32.jpg",
+            "shipping_options": [],
+            "name": "Net 32",
+            "url": "https://www.net32.com/"
+        }
+    },
+    {
+        "model": "accounts.vendor",
+        "pk": 3,
+        "fields": {
+            "slug": "darby",
+            "logo": "https://cdn.joinordo.com/vendors/darby.jpg",
+            "shipping_options": [],
+            "name": "Darby",
+            "url": "https://www.darbydental.com/"
+        }
+    },
+    {
+        "model": "accounts.vendor",
+        "pk": 4,
+        "fields": {
+            "slug": "patterson",
+            "logo": "https://cdn.joinordo.com/vendors/patterson.jpg",
+            "shipping_options": [
+                "Standard",
+                "Second Day Air",
+                "Next Day Air"
+            ],
+            "name": "Patterson",
+            "url": "https://www.pattersondental.com/"
+        }
+    },
+    {
+        "model": "accounts.vendor",
+        "pk": 5,
+        "fields": {
+            "slug": "amazon",
+            "logo": "https://cdn.joinordo.com/vendors/amazon.jpg",
+            "shipping_options": [],
+            "name": "Amazon",
+            "url": "https://www.amazon.com/"
+        }
+    },
+    {
+        "model": "accounts.vendor",
+        "pk": 6,
+        "fields": {
+            "slug": "ultradent",
+            "logo": "https://cdn.joinordo.com/vendors/ultradent.jpg",
+            "shipping_options": [
+                "Standard",
+                "2 Business Days",
+                "Next Business Day"
+            ],
+            "name": "Ultradent",
+            "url": "https://www.ultradent.com/"
+        }
+    },
+    {
+        "model": "accounts.vendor",
+        "pk": 7,
+        "fields": {
+            "slug": "benco",
+            "logo": "https://cdn.joinordo.com/vendors/benco.jpg",
+            "shipping_options": [
+                "Default (2DayGrnd.MT,WY,CO)",
+                "UPS Ground",
+                "FedEx Ground",
+                "Truck",
+                "OnTrac",
+                "OnTrac WA,OR",
+                "OnTrac AZ",
+                "MOVERS",
+                "UPS 2nd Day Air",
+                "UPS Next Day Air",
+                "UPS Saturday Air",
+                "UPS 2nd Day Air A.M.",
+                "UPS 3 Day Select",
+                "UPS Next Day Air Saver",
+                "UPS Atlanta",
+                "UPS VA Beach",
+                "UPS UTAH",
+                "2DayGrnd.MT,WY,CO",
+                "UPS Southern CAL",
+                "UPS S.Carolina",
+                "FedEx Carolinas",
+                "UPS Ground",
+                "Truck"
+            ],
+            "name": "Benco",
+            "url": "https://www.benco.com/"
+        }
+    },
+    {
+        "model": "accounts.vendor",
+        "pk": 8,
+        "fields": {
+            "slug": "implant_direct",
+            "logo": "https://cdn.joinordo.com/vendors/implant_direct.jpg",
+            "shipping_options": [
+                "2 Day",
+                "Next Day Air",
+                "Next Day",
+                "Next Day Air Early",
+                "Next Day Early"
+            ],
+            "name": "Implant Direct",
+            "url": "https://www.implantdirect.com/"
+        }
+    },
+    {
+        "model": "accounts.vendor",
+        "pk": 9,
+        "fields": {
+            "slug": "edge_endo",
+            "logo": "https://cdn.joinordo.com/vendors/edge_endo.jpg",
+            "shipping_options": [
+                "UPS Ground",
+                "UPS 3 Day Select",
+                "UPS 2nd Day Air",
+                "UPS Next Day Air Saver",
+                "UPS Next Day Air",
+                "UPS Next Day Air Early A.M."
+            ],
+            "name": "Edge Endo",
+            "url": "https://www.edgeendo.com/"
+        }
+    },
+    {
+        "model": "accounts.vendor",
+        "pk": 10,
+        "fields": {
+            "slug": "dental_city",
+            "logo": "https://cdn.joinordo.com/vendors/dental_city.jpg",
+            "shipping_options": [
+                "UPS Ground"
+            ],
+            "name": "Dental City",
+            "url": "https://dentalcity.com/"
+        }
+    }
+]

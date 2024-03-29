@@ -1,0 +1,23 @@
+{
+    "default_shipping_method": "Standard shipping",
+    "shipping_options": {
+        "Standard shipping": {
+            "shipping": "",
+            "shipping_method": "Standard shipping",
+            "shipping_address": "",
+            "shipping_value": "STANDARD"
+        },
+        "2nd day air": {
+            "shipping": "",
+            "shipping_method": "2nd day air",
+            "shipping_address": "",
+            "shipping_value": "TWODAY"
+        },
+        "Next day air": {
+            "shipping": "",
+            "shipping_method": "Next day air",
+            "shipping_address": "",
+            "shipping_value": "NEXTDAY"
+        }
+    }
+}

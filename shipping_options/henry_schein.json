@@ -1,0 +1,35 @@
+{
+  "default_shipping_method": "UPS Standard Delivery",
+  "shipping_options": {
+    "UPS Standard Delivery": {
+      "shipping": "$0.00",
+      "shipping_method": "UPS Standard Delivery",
+      "shipping_address": "Alexandra Kantor - Partner\n4760 W Mineral Ave Ste 60\nLittleton, CO 801282540\nUnited States of America\n720-222-2345",
+      "shipping_value": "5ef38968-cec2-4a92-9bf5-eec83f515601"
+    },
+    "Next Day Delivery (extra charge)": {
+      "shipping": "$24.20",
+      "shipping_method": "Next Day Delivery (extra charge)",
+      "shipping_address": "Alexandra Kantor - Partner\n4760 W Mineral Ave Ste 60\nLittleton, CO 801282540\nUnited States of America\n720-222-2345",
+      "shipping_value": "1dee35c6-bd47-4a26-b1c0-57b9865c1f62"
+    },
+    "Saturday Delivery (extra charge)": {
+      "shipping": "$37.40",
+      "shipping_method": "Saturday Delivery (extra charge)",
+      "shipping_address": "Alexandra Kantor - Partner\n4760 W Mineral Ave Ste 60\nLittleton, CO 801282540\nUnited States of America\n720-222-2345",
+      "shipping_value": "37f3017d-c881-4c5d-bc7c-463b2379ee58"
+    },
+    "Next Day 10:30 (extra charge)": {
+      "shipping": "$27.40",
+      "shipping_method": "Next Day 10:30 (extra charge)",
+      "shipping_address": "Alexandra Kantor - Partner\n4760 W Mineral Ave Ste 60\nLittleton, CO 801282540\nUnited States of America\n720-222-2345",
+      "shipping_value": "6100e1b6-d1d4-4f3a-afec-ca085f0ab9a0"
+    },
+    "2nd Day Air (extra charge)": {
+      "shipping": "$11.93",
+      "shipping_method": "2nd Day Air (extra charge)",
+      "shipping_address": "Alexandra Kantor - Partner\n4760 W Mineral Ave Ste 60\nLittleton, CO 801282540\nUnited States of America\n720-222-2345",
+      "shipping_value": "ebf5a034-4e0a-4e70-b8ba-f8ae79ee533c"
+    }
+  }
+}

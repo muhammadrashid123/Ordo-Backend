@@ -1,0 +1,67 @@
+{% load admin_list %}
+{% load i18n %}
+{% load static %}
+{% load custom_tags %}
+
+{% if pagination_required %}
+<div class="d-flex justify-content-between mt-4">
+    <div id="page_selector">
+        {% with '25 50 100 250' as list %}
+          {% translate 'Number of items per page' %}
+          <select>
+          {% if cl.list_per_page|slugify not in list.split %}
+            <option selected>{{ cl.list_per_page }}</option>
+          {% endif %}
+          {% for i in list.split %}
+            <option value="{{ i }}" {% if cl.list_per_page|slugify == i %}selected{% endif %}>{{ i }}</option>
+          {% endfor %}
+          </select>
+        {% endwith %}
+<!--        {% widthratio cl.list_per_page 1 cl.page_num|add:"-1" as val %}-->
+<!--        Showing {{ val|add:"1" }} to {% widthratio cl.list_per_page 1 cl.page_num %}-->
+<!--        of {{ cl.result_count }} {% if cl.result_count == 1 %}{{ cl.opts.verbose_name }}{% else %}{{ cl.opts.verbose_name_plural }}{% endif %}-->
+    </div>
+    <div>
+        <div class="dataTables_paginate paging_simple_numbers">
+            <ul class="pagination">
+                {% if cl.page_num > 1 %}
+                <li class="page-item page-prev">
+                    <a class="page-link" tabindex="-1" href='?p={{cl.page_num|add:"-1"}}'>
+                        Previous
+                    </a>
+                </li>
+                {% endif%}
+                {% for i in page_range %}
+                {% paginator_number cl i %}
+                {% endfor %}
+                {% if cl.page_num < cl.paginator.num_pages %}
+                <li class="page-item page-next">
+                    <a class="page-link" href='?p={{cl.page_num|add:"1"}}'>
+                        Next
+                    </a>
+                </li>
+
+                {% endif%}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+<!-- {% if show_all_url %}<a href="{{ show_all_url }}" class="showall">{% translate 'Show all' %}</a>{% endif %}
+{% if cl.formset and cl.result_count %}<input type="submit" name="_save" class="default" value="{% translate 'Save' %}">{% endif %} -->
+{% block scripts %}
+<script src="{% static 'assets/js/jquery.min.js'%}"></script>
+<script>
+    $(function(){
+        // bind change event to select
+        $('#page_selector select').bind('change', function () {
+            var selected_value = $(this).val(); // get selected value
+            var p = new URLSearchParams(location.search);
+            p.set('list_per_page', selected_value);
+            window.location.search = p.toString();
+            return false;
+         });
+     });
+</script>
+{% endblock %}

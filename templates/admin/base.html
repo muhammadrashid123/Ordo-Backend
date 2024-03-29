@@ -1,0 +1,45 @@
+{% extends '../components/base.html' %}
+{% load static %}
+
+{% block styles %}
+
+{% endblock %}
+<!-- Content -->
+<div id="content" class="{% block coltype %}colM{% endblock %}">
+	{% block pretitle %}{% endblock %}
+	{% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+	{% block content_subtitle %}{% if subtitle %}<h2>{{ subtitle }}</h2>{% endif %}{% endblock %}
+	{% block content %}
+		{% block object-tools %}{% endblock %}
+		{{ content }}
+	{% endblock %}
+	{% block sidebar %}{% endblock %}
+	<br class="clear">
+</div>
+<!-- END Content -->
+{% block scripts %}
+
+<!-- APEXCHART JS -->
+<script src="{% static 'assets/js/apexcharts.js'%}"></script>
+
+<!-- INTERNAL SELECT2 JS -->
+<script src="{% static 'assets/plugins/select2/select2.full.min.js'%}"></script>
+
+<!-- CHART-CIRCLE JS-->
+<script src="{% static 'assets/js/circle-progress.min.js'%}"></script>
+
+<!-- INTERNAL Data tables js-->
+<script src="{% static 'assets/plugins/datatable/js/jquery.dataTables.min.js'%}"></script>
+<script src="{% static 'assets/plugins/datatable/js/dataTables.bootstrap5.js'%}"></script>
+<script src="{% static 'assets/plugins/datatable/dataTables.responsive.min.js'%}"></script>
+
+<!-- INDEX JS -->
+<script src="{% static 'assets/js/index1.js'%}"></script>
+
+<!-- REPLY JS-->
+<script src="{% static 'assets/js/reply.js'%}"></script>
+
+<!-- THEMECOLORS JS -->
+<script src="{% static 'assets/js/themeColors.js'%}"></script>
+
+{% endblock %}

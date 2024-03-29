@@ -1,0 +1,23 @@
+{
+  "default_shipping_method": "Standard",
+  "shipping_options": {
+    "Standard": {
+      "shipping_address": "4760 W MINERAL AVE\nSTE 60\nLittleton, CO 80128 US",
+      "shipping_method": "Standard",
+      "shipping": "$14.95",
+      "shipping_value": "STANDARD"
+    },
+    "2 Business Days": {
+      "shipping_address": "4760 W MINERAL AVE\nSTE 60\nLittleton, CO 80128 US",
+      "shipping_method": "2 Business Days",
+      "shipping": "$29.25",
+      "shipping_value": "000001_2DAY_A_LTL"
+    },
+    "Next Business Day": {
+      "shipping_address": "4760 W MINERAL AVE\nSTE 60\nLittleton, CO 80128 US",
+      "shipping_method": "Next Business Day",
+      "shipping": "$44.25",
+      "shipping_value": "000001_OVERNIGHT_A_1DA"
+    }
+  }
+}

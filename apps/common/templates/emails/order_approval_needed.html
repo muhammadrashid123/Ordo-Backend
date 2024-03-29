@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Approval</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+    .card-table-wrapper {
+      padding: 60px 55px 60px;
+    }
+    @media only screen and (max-device-width: 620px) {
+      .card-table-wrapper {
+        padding: 30px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+    <tr>
+      <td style="background-color: #ebf4f8; padding: 0 16px;">
+        <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; max-width: 600px; margin: 28px auto;">
+          <tr>
+            <td style="text-align: center;">
+              <img src="https://cdn.joinordo.com/emails/images/logo.png" alt="" style="width: 150px; height: 40px; margin: 0 0 30px 0px;">
+            </td>
+          </tr>
+          <tr>
+            <td style="border-radius: 8px; background-color: #fff;" class="card-table-wrapper">
+              <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin-top: 30px;">
+                <tr>
+                  <td style="text-align: center;">
+                    <p style="margin: 0 auto; max-width: 403px; font-weight: bold; font-size: 18px; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: center; color: #284458;">
+                        {{ order_created_by.full_name }} submitted an order on {{ order_date }} for {{ office.name }}, Order details are below.
+                    </p>
+                    <a href="{{ SITE_URL }}/orders?order_approval_reject={{vendor_order_ids}}" style="display: block; width: auto; max-width: 262px; height: 35px; margin: 20px auto 0px auto; padding: 2px 15px 2px 16px; border-radius: 4px; background-color: #49a2cb;  font-size: 14px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 2.4; letter-spacing: 0.4px; text-align: center; color: #fff; text-decoration: none;">Approve or Reject Order</a>
+                  </td>
+                </tr>
+              </table>
+              <p style="width: 100%; height: 0; margin: 40px 0 40px 0; border: solid 1px #ebeaeb;"></p>
+
+              <p style=" font-size: 16px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.6; letter-spacing: normal; text-align: center; color: rgba(44, 44, 44, 0.5);">Please select the "Approve or Reject" button above to take you to Ordo where you can approve, edit, or even cancel this order.</p>
+
+              <p style="width: 100%; height: 0; margin: 40px 0 0; border: solid 1px #ebeaeb;"></p>
+
+              <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin-top: 30px;">
+                <tr>
+                  <td>
+                    <p style="font-weight: bold; font-size: 18px; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: left; color: #284458;">Dental Supply Order Summary</p>
+                  </td>
+                  <td style="text-align: right;">
+                    <a href="#" style="text-decoration: none;  font-size: 12px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: right; color: #13add9;">View order details</a>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="width: 100%; height: 0; margin: 20px 0 0 0; border: solid 1px #ebeaeb;"></p>
+
+              <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin-top: 30px;">
+                <tr>
+                  <td style="vertical-align: baseline;">
+                    <p style="width: max-content; margin: 0; font-weight: bold; font-size: 14px; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: left; color: #284458;">Vendor : </p>
+                  </td>
+                  <td>
+                    {% for vendor in vendors %}
+                      <p style="margin: 0;  font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: left; color: #969696;">{{ vendor }}</p>
+                    {%  endfor %}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: baseline; padding: 15px 10px 15px 0;">
+                    <p style="width: max-content; margin: 0; font-weight: bold; font-size: 14px; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: left; color: #284458;">Placed by : </p>
+                  </td>
+                  <td style="padding: 15px 0;">
+                    <p style="margin: 0;  font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: left; color: #969696;">{{ order_created_by.full_name }} (User)
+                        {{ office.name }} on {{ order_date| date:"F d, Y" }}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: baseline; padding: 15px 10px 15px 0;">
+                    <p style="width: max-content; margin: 0; font-weight: bold; font-size: 14px; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: left; color: #284458;">Deliver to : </p>
+                  </td>
+                  <td style="padding: 15px 0;">
+                    <p style="margin: 0;  font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: left; color: #969696;">{{ office.name }}, {{ office.shipping_address }} </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: baseline; padding: 15px 10px 15px 0;">
+                    <p style="width: max-content; margin: 0; font-weight: bold; font-size: 14px; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: left; color: #284458;">Order Total :</p>
+                  </td>
+                  <td style="padding: 15px 0;">
+                    <p style="margin: 0;  font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.4; letter-spacing: normal; text-align: left; color: #29bf12;">${{ total_amount }}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="width: 100%; height: 0; margin: 40px 0 0; border: solid 1px #ebeaeb;"></p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

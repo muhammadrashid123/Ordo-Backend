@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Budget</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+    .card-table-wrapper {
+      padding: 60px 55px 60px;
+    }
+    @media only screen and (max-device-width: 620px) {
+      .card-table-wrapper {
+        padding: 30px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+    <tr>
+      <td style="background-color: #ebf4f8; padding: 0 16px;">
+        <table cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; margin: 28px auto;">
+          <tr>
+            <td style="text-align: center;">
+              <img src="https://cdn.joinordo.com/emails/images/logo.png" alt="" style="width: 150px; height: 40px; margin: 0 0 30px 0px;">
+            </td>
+          </tr>
+          <tr>
+            <td style="border-radius: 8px; background-color: #fff;" class="card-table-wrapper">
+              <p style="font-family: GILROY-BOLD; font-size: 18px; font-stretch: normal; font-style: normal; letter-spacing: normal; text-align: left; color: #1c455a; padding-top:20px;">Your budget has automatically updated!</p>
+              <p style="font-family: GILROY; font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; text-align: left; color: rgba(44, 44, 44, 0.5)">
+                Hello {{first_name}}!
+              </p>
+              <p style="font-family: GILROY; font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; text-align: left; color: rgba(44, 44, 44, 0.5)">
+                Because you account is linked to Open Dental, I've automatically updated your budget for {{current_month}}. Please review the numbers below.
+              </p>
+              <p style="font-family: GILROY; font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; text-align: left; color: rgba(44, 44, 44, 0.5)">
+                {{previous_month}} Adjusted Production : <span style="color:#5EBC3B">${{adjusted_production}}</span> <br>
+                {{previous_month}} Collections : <span style="color:#5EBC3B">${{collections}}</span>
+              </p>
+              <p style="font-family: GILROY; font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; text-align: left; color: rgba(44, 44, 44, 0.5)">
+                Dental Supplies : Spend Percentage : <span style="color:#13ADD9">{{dental_percentage}}% </span>
+                <br>
+                {{current_month}} Dental Supply Budget : <span style="color:#5EBC3B">${{dental_budget}}</span>
+              </p>
+              <p style="font-family: GILROY; font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; text-align: left; color: rgba(44, 44, 44, 0.5)">
+                Front Office Supplies : Spend Percentage : <span style="color:#13ADD9">{{office_percentage}}% </span>
+                <br>
+                {{current_month}} Front Office Supply Budget : <span style="color:#5EBC3B">${{office_budget}}</span>
+              </p>
+              <p style="font-family: GILROY; font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; text-align: left; color: rgba(44, 44, 44, 0.5)">
+                Keep up the great work!
+              </p>
+              <p style="font-family: GILROY; font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; text-align: left; color: rgba(44, 44, 44, 0.5)">
+                Gordo
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

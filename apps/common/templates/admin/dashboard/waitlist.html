@@ -1,0 +1,19 @@
+<div class="card overflow-hidden" onclick="window.location='{% url 'admin:waitlist_waitlist_changelist' %}';" style="cursor:pointer;">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <h3 class="mb-2 fw-semibold">{{title}}</h3>
+                <p class="text-muted fs-13 mb-0">Total Waiting Members</p>
+                <p class="text-muted mb-0 mt-2 fs-12">
+                    {{value}}
+                    currently waiting
+                </p>
+            </div>
+            <div class="col col-auto top-icn dash">
+                <div class="counter-icon bg-primary dash ms-auto box-shadow-primary">
+                   <i class="fa fa-clock-o" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

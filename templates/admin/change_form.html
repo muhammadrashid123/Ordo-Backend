@@ -1,0 +1,193 @@
+{% extends 'components/base.html' %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block extrahead %}{{ block.super }}
+<script src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "admin/css/base.css" %}">
+    <link rel="stylesheet" href="{% static "admin/css/forms.css" %}">
+{% endblock %}
+
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}
+
+{% block content %}
+<!-- PAGE-HEADER -->
+<div class="page-header">
+    <div>
+        <h1 class="page-title">{% if add %}Add {% elif change %}Change {% endif %} {{opts.verbose_name}}</h1>
+    </div>
+    {% block object-tools %}
+    {% if change %}{% if not is_popup %}
+    <ul class="object-tools">
+        {% block object-tools-items %}
+        {% change_form_object_tools %}
+        {% endblock %}
+    </ul>
+    {% endif %}{% endif %}
+    {% endblock %}
+</div>
+<!-- PAGE-HEADER END -->
+<div id="content-main">
+    <div class="card">
+        <div class="card-body">
+            <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}{% if form_url %}action="{{ form_url }}" {% endif %}method="post" id="{{ opts.model_name }}_form" novalidate>{% csrf_token %}{% block form_top %}{% endblock %}
+                <div>
+                    {% if messages %}
+                    <ul class="messages" style="display: none;">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1">{% endif %}
+                    {% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}">{% endif %}
+                    {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
+                    {% if errors %}
+                        <p class="errornote">
+                        {% if errors|length == 1 %}{% translate "Please correct the error below." %}{% else %}{% translate "Please correct the errors below." %}{% endif %}
+                        </p>
+                        {{ adminform.form.non_field_errors }}
+                    {% endif %}
+
+                    {% block field_sets %}
+                    {% for fieldset in adminform %}
+                      {% include "admin/includes/fieldset.html" %}
+                    {% endfor %}
+                    {% endblock %}
+
+                    {% block after_field_sets %}{% endblock %}
+
+                    {% block inline_field_sets %}
+                    {% for inline_admin_formset in inline_admin_formsets %}
+                        {% include inline_admin_formset.opts.template %}
+                    {% endfor %}
+                    {% endblock %}
+
+                    {% block after_related_objects %}{% endblock %}
+
+                    {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+
+                    {% block admin_change_form_document_ready %}
+                        <script id="django-admin-form-add-constants"
+                                src="{% static 'admin/js/change_form.js' %}"
+                                {% if adminform and add %}
+                                    data-model-name="{{ opts.model_name }}"
+                                {% endif %}
+                                async>
+                        </script>
+                    {% endblock %}
+
+                    {# JavaScript for prepopulated fields #}
+                    {% prepopulated_fields_js %}
+
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+
+<!-- Bootstrap-Date Range Picker js-->
+<script src=" {% static 'assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js' %} "></script>
+
+<!-- jQuery UI Date Picker js -->
+<script src=" {% static 'assets/plugins/date-picker/jquery-ui.js' %} "></script>
+
+<!-- bootstrap-datepicker js (Date picker Style-01) -->
+<script src=" {% static 'assets/plugins/bootstrap-datepicker/js/datepicker.js' %} "></script>
+
+<!-- Amaze UI Date Picker js-->
+<script src=" {% static 'assets/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js' %} "></script>
+
+<!-- Simple Date Time Picker js-->
+<script src=" {% static 'assets/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js' %} "></script>
+
+<!-- SELECT2 JS -->
+<script src=" {% static 'assets/plugins/select2/select2.full.min.js' %} "></script>
+
+<!-- BOOTSTRAP MAX-LENGTH JS -->
+<script src=" {% static 'assets/plugins/bootstrap-maxlength/dist/bootstrap-maxlength.min.js' %} "></script>
+
+<!--Internal Fileuploads js-->
+<script src=" {% static 'assets/plugins/fileuploads/js/fileupload.js' %} "></script>
+<script src=" {% static 'assets/plugins/fileuploads/js/file-upload.js' %} "></script>
+
+<!--Internal Fancy uploader js-->
+<script src=" {% static 'assets/plugins/fancyuploder/jquery.ui.widget.js' %} "></script>
+<script src=" {% static 'assets/plugins/fancyuploder/jquery.fileupload.js' %} "></script>
+<script src=" {% static 'assets/plugins/fancyuploder/jquery.iframe-transport.js' %} "></script>
+<script src=" {% static 'assets/plugins/fancyuploder/jquery.fancy-fileupload.js' %} "></script>
+<script src=" {% static 'assets/plugins/fancyuploder/fancy-uploader.js' %} "></script>
+
+<!-- FORM ELEMENTS JS -->
+<script src=" {% static 'assets/js/formelementadvnced.js' %} "></script>
+
+<!-- INTERNAL Notifications js -->
+<script src="{% static 'assets/plugins/notify/js/rainbow.js'%}"></script>
+<script src="{% static 'assets/plugins/notify/js/jquery.growl.js'%}"></script>
+<script src="{% static 'assets/plugins/notify/js/notifIt.js'%}"></script>
+
+<!-- THEMECOLORS JS -->
+<script src="{% static 'assets/js/themeColors.js'%}"></script>
+
+<script>
+    $('.pop_inline_del_obj').click(function(){
+        $("#form_delete_confirm").attr("action", $(this).attr("action_url"))
+        $('#del_obj_pk').val($(this).closest("tr")[0].children[0].children[0].innerHTML);
+    })
+
+    $('.success_relink').each(function(i, el){
+        notif({
+            msg: "Relink success",
+            type: "success"
+        });
+    })
+
+    $('.fail_relink').each(function(i, el){
+        notif({
+            msg: "<b>Fail:</b> Vendor link failed with the given credential",
+            type: "warning",
+        });
+    })
+
+    $('.btn-relink-vendor').click(function(){
+        event.preventDefault();
+        if($(this).hasClass('logging-in'))
+            return;
+        this.innerHTML = '<i class="fa fa-spinner fa-spin"></i>Relinking';
+        $(this).addClass('logging-in')
+        const csrfToken = $('input[name="csrfmiddlewaretoken"]').val()
+        const username = $(this).closest("td").siblings(".field-username").find("input").val();
+        const password = $(this).closest("td").siblings(".field-password").find("input").val();
+        const originurl = window.location.href
+        const url = $(this).attr('href');
+        $.ajax({
+            url: window.location.origin +url,
+            type:"POST",
+            headers: {
+                'X-CSRFToken': csrfToken
+            },
+            data:{username: username, password: password},
+            success: function(msg){
+                window.location = originurl;
+            },
+            error: function(msg) {
+                $('.btn-relink-vendor').text('Relink Vendor');
+                $('.btn-relink-vendor').removeClass('logging-in');
+                alert("Something wrong with the given form data.");
+            }
+        });
+    })
+</script>
+
+{% endblock %}

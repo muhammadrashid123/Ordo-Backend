@@ -1,0 +1,17 @@
+{
+    "default_shipping_method": "UPS Ground",
+    "shipping_options": {
+        "Standard shipping": {
+            "shipping": "0.0",
+            "shipping_method": "Standard shipping",
+            "shipping_address": "",
+            "shipping_value": ""
+        },
+        "UPS Ground": {
+            "shipping": "12.99",
+            "shipping_method": "UPS Ground",
+            "shipping_address": "",
+            "shipping_value": ""
+        }
+    }
+}

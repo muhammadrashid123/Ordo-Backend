@@ -1,0 +1,73 @@
+{% extends '../components/custom-base.html' %}
+{% load static %}
+
+    {% block styles %}
+
+	<style>
+		.page {
+			background-color:white;
+		}
+		body.dark-mode .page {
+			background-color:#2c2f3e;
+		}
+	</style>
+
+    {% endblock %}
+
+        {% block content %}
+
+			<!-- PAGE -->
+			<div class="page">
+				<div>
+				    <!-- CONTAINER OPEN -->
+					<div class="col col-login mx-auto text-center">
+						<a href="index" class="text-center">
+							<img src="{% static 'assets/images/brand/logo.png' %}" class="header-brand-img" alt="">
+						</a>
+					</div>
+
+					<div class="container-login100">
+						<div class="wrap-login100 p-0">
+							<div class="card-body">
+								<form class="login100-form validate-form" action="{{ app_path }}" method="post">{% csrf_token %}
+									<span class="login100-form-title">
+										Admin Login
+									</span>
+									{% if form.non_field_errors %}
+										<div class="alert alert-danger">
+											{% for error in form.non_field_errors %}
+												{{ error }}
+											{% endfor %}
+										</div>
+									{% endif %}
+									<div class="wrap-input100 validate-input" data-bs-validate = "Valid email is required: ex@abc.xyz">
+										<input class="input100" type="text" name="username" placeholder="Email">
+										<span class="focus-input100"></span>
+										<span class="symbol-input100">
+											<i class="zmdi zmdi-email" aria-hidden="true"></i>
+										</span>
+									</div>
+									<div class="wrap-input100 validate-input" data-bs-validate = "Password is required">
+										<input class="input100" type="password" name="password" placeholder="Password">
+										<span class="focus-input100"></span>
+										<span class="symbol-input100">
+											<i class="zmdi zmdi-lock" aria-hidden="true"></i>
+										</span>
+									</div>
+									<div class="container-login100-form-btn">
+										<input type="submit" class="login100-form-btn btn-primary" value="Log In">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- CONTAINER CLOSED -->
+				</div>
+			</div>
+			<!-- End PAGE -->
+
+        {% endblock %}
+
+    {% block scripts %}
+
+    {% endblock %}

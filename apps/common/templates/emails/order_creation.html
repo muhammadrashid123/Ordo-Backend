@@ -1,0 +1,198 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ordre Creation</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+    .card-table-wrapper {
+      padding: 60px 55px 60px;
+    }
+    @media only screen and (max-device-width: 620px) {
+      .tablescale {
+        width: 100% !important;
+        margin: 0 !important;
+      }
+      .card-table-wrapper {
+        padding: 30px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+    <tr>
+      <td style="background-color: #ebf4f8; padding: 0 16px;">
+        <table cellspacing="0" cellpadding="0" border="0" style="max-width: 700px; margin: 28px auto;">
+          <tr>
+            <td style="text-align: center;">
+              <img src="https://cdn.joinordo.com/emails/images/logo.png" alt="" style="width: 150px; height: 40px; margin: 0 0 30px 0px;">
+            </td>
+          </tr>
+          <tr>
+            <td style="border-radius: 8px; background-color: #fff;" class="card-table-wrapper">
+
+              <p style="font-weight: bold; font-size: 18px; font-stretch: normal; font-style: normal; letter-spacing: normal; text-align: left; color: #1c455a; padding-top:20px;">Your order has been placed</p>
+              <p style=" font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.8; letter-spacing: normal; text-align: left; color: rgba(44, 44, 44, 0.5); max-width: 450px;">Below are the order and shipping details.</p>
+
+              <p style="width: 100%; height: 0; margin: 40px 0 0; border: solid 1px #ebeaeb;"></p>
+
+              <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin-top: 30px;">
+                <tr>
+                  <td>
+                    <table width="25%" class="tablescale" align="left">
+                      <tr>
+                        <td>
+                          <p style="font-weight: bold; font-size: 16px; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; color: #1c455a;">Order Details</p>
+                        </td>
+                      </tr>
+                    </table>
+                    <table width="29%" class="tablescale" align="left">
+                      <tr>
+                        <td>
+                          <p style=" font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal;">
+                            <span style="color: #2c2c2c;">Order Date : </span>
+                            <span style="color: #29bf12; font-weight: bold">{{ order_date }}</span>
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                    <table width="23%" class="tablescale" align="left">
+                      <tr>
+                        <td>
+                          <p style=" font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal;">
+                            <span style="color: #2c2c2c;">Number of Items : </span>
+                            <span style="color: #29bf12; font-weight: bold">{{ total_items }}</span>
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                    <table width="23%" class="tablescale" align="left">
+                      <tr>
+                        <td>
+                          <p style=" font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal;">
+                            <span style="color: #2c2c2c;">Order Total : </span>
+                            <span style="color: #29bf12; font-weight: bold">${{ total_amount }}</span>
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin-top: 30px;">
+                <colgroup>
+                  <col width="50%" />
+                  <col width="25%" />
+                  <col width="15%" />
+                  <col width="10%" />
+                </colgroup>
+                <tr>
+                  <td style="height: 42px; border-top-left-radius: 8px; border-bottom-left-radius: 8px; background-color: #edf4f8; padding-left: 20px;">
+                    <p style=" font-size: 12px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; text-align: left; color: #1c455a;">Image</p>
+                  </td>
+                  <td style="height: 42px; background-color: #edf4f8; padding-left: 10px;">
+                    <p style=" font-size: 12px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; text-align: left; color: #1c455a;">Vendor</p>
+                  </td>
+                  <td style="height: 42px; background-color: #edf4f8; padding-left: 10px;">
+                    <p style=" font-size: 12px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; text-align: left; color: #1c455a;">Quantity</p>
+                  </td>
+                  <td style="height: 42px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; background-color: #edf4f8; padding-left: 10px;">
+                    <p style=" font-size: 12px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; text-align: left; color: #1c455a;">Total</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="height: 15px;"></td>
+                  <td style="height: 15px;"></td>
+                  <td style="height: 15px;"></td>
+                  <td style="height: 15px;"></td>
+                </tr>
+                {% for product in products %}
+                <tr>
+                  <td style="border: solid 1px #e8eced; border-right: none; border-top-left-radius: 8px;">
+                    <table cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td style="padding: 10px;">
+                          <img src="{{ product.product.images.first.image }}" alt="" style="width: 100%; height: 100%; max-width: 50px; max-height: 50px; min-width: 50px; border-radius: 8px; border: solid 1.5px #e8eced;">
+                        </td>
+                        <td>
+                          <p style="margin: 0; font-size: 11px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; color: #70706f;">{{ product.product.name }}</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td style="padding: 10px; border: solid 1px #e8eced; border-left: none; border-right: none;">
+                    <table cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td style="padding-right: 10px;">
+                          <img src="{{ product.product.vendor.logo }}" alt="" style="width: 100%; height: 100%; max-height: 30px; max-width: 30px; min-width: 30px;">
+                        </td>
+                        <td>
+                          <p style="margin: 0; font-size: 11px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; color: #70706f;">{{ product.product.vendor.name }}</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td style="padding: 10px; border: solid 1px #e8eced; border-left: none; border-right: none;">
+                    <p style=" font-size: 11px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; text-align: left; color: #70706f;">{{ product.quantity }} Units</p>
+                  </td>
+                  <td style="padding-right: 10px; border: solid 1px #e8eced; border-left: none; border-top-right-radius: 8px;">
+                    <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; height: 75px;">
+                      <tr>
+                        <td style="padding: 10px;">
+                          <p style=" font-size: 11px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; text-align: left; color: #29bf12;">${{ product.total_price }}</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+
+              <p style="width: 100%; height: 0; margin: 40px 0 0; border: solid 1px #ebeaeb;"></p>
+              <p style="font-weight: bold; font-size: 18px; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; text-align: left; color: #1c455a; padding-top:20px;">Shipping Details</p>
+              <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin-top: 30px;">
+                <tr>
+                  <td style="border-radius: 4px; border: solid 1px #e8eced; padding: 25px">
+                    <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+                      <tr>
+                        <td style="width: 100%;">
+                          <p style="font-weight: bold; font-size: 14px; font-stretch: normal; font-style: normal; line-height: 1.2; letter-spacing: normal; text-align: left; color: #70706f; padding-bottom: 7px;">Shipping Address</p>
+                          <p style=" font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 0.6; letter-spacing: normal; text-align: left; color: #70706f; padding-bottom: 7px;">{{ office.name }}</p>
+                          <p style=" font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 0.6; letter-spacing: normal; text-align: left; color: #70706f; padding-bottom: 7px;">{{ office.addresses.first.address}}</p>
+                          <p style=" font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 0.6; letter-spacing: normal; text-align: left; color: #70706f; padding-bottom: 7px;">{{ office.addresses.first.city }}, {{ office.addresses.first.state }}</p>
+                          <p style=" font-size: 12px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 0.6; letter-spacing: normal; text-align: left; color: #70706f; padding-bottom: 7px;">{{ office.addresses.first.zip_code }}, United States</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+
+              <p style="width: 100%; height: 0; margin: 40px 0 0; border: solid 1px #ebeaeb;"></p>
+
+              <p style=" font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.6; letter-spacing: normal; text-align: left; color: rgba(44, 44, 44, 0.5); padding-top:20px; padding-bottom:20px;">If you have any questions or conerns with any items in your order, you can manage them in Ordo on the “Orders” tab.</p>
+
+              <a href="#" style="display: block; width: 140px; height: 30px; margin: 20px 76px 40px 0; padding: 10px 15px 10px 16px; border-radius: 4px; background-color: #49a2cb;  font-size: 14px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 2.4; letter-spacing: 0.4px; text-align: center; color: #fff; text-decoration: none;">Manage Order</a>
+
+              <p style="width: 100%; height: 0; margin: 0px 0 0; border: solid 1px #ebeaeb;"></p>
+              <table cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin-top: 30px;">
+                <tr>
+                  <td width="60%">
+                    <img src="https://cdn.joinordo.com/emails/images/logo.png" alt="" style="width: 100px; height: 28px;">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% load i18n %}
+
+{% if app_list %}
+{% if side_bar_list %}
+<ul class="side-menu">
+  <li>
+    <a href="/admin/">
+      <span class="side-menu__label">Dashboard</span>
+    </a>
+  </li>
+  <li class="slide is-expanded">
+    <a class="side-menu__item" data-bs-toggle="slide" href="#">
+        <span class="side-menu__label">Home</span><i class="angle fa fa-angle-right"></i>
+    </a>
+    <ul class="slide-menu" style="display: block; margin-left: 0;">
+      <li><a href="/admin/accounts/company/" class="slide-item active">Companies</a></li>
+      <li><a href="/admin/accounts/user/" class="slide-item active">User</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="/admin/accounts/vendor/">
+      <span class="side-menu__label">Vendors</span>
+    </a>
+  </li>
+  <li>
+    <a href="/admin/accounts/unlinkedofficevendor/">
+      <span class="side-menu__label">Unlinked Vendors</span>
+    </a>
+  </li>
+  <li>
+    <a href="/admin/orders/order/">
+      <span class="side-menu__label">Orders</span>
+    </a>
+  </li>
+  <li class="slide is-expanded">
+    <a class="side-menu__item" data-bs-toggle="slide" href="#">
+        <span class="side-menu__label">Development</span><i class="angle fa fa-angle-right"></i>
+    </a>
+    <ul class="slide-menu" style="display: block; margin-left: 0;">
+      <li><a href="/admin/orders/keyword/" class="slide-item active">Keywords</a></li>
+      <li><a href="/admin/orders/officekeyword/" class="slide-item active">Office keywords</a></li>
+      <li><a href="/admin/orders/officeproductcategory/" class="slide-item active">Office product categorys</a></li>
+      <li><a href="/admin/orders/officeproduct/" class="slide-item active">Office products</a></li>
+      <li><a href="/admin/accounts/officevendor/" class="slide-item active">Office Vendors</a></li>
+      <li><a href="/admin/orders/vendororder/" class="slide-item active">Vendor Orders</a></li>
+      <li><a href="/admin/orders/productcategory/" class="slide-item active">Product categories</a></li>
+      <li><a href="/admin/orders/product/" class="slide-item active">Products</a></li>
+      <li><a href="/admin/django_celery_beat/crontabschedule/" class="slide-item active">Crontabs</a></li>
+      <li><a href="/admin/django_celery_beat/intervalschedule/" class="slide-item active">Intervals</a></li>
+      <li><a href="/admin/django_celery_beat/periodictask/" class="slide-item active">Periodic tasks</a></li>
+      <li><a href="/admin/django_celery_beat/solarschedule/" class="slide-item active">Solar events</a></li>
+      <li><a href="/admin/django_rest_passwordreset/resetpasswordtoken/" class="slide-item active">Password Reset Tokens</a></li>
+      <li><a href="/admin/orders/priceage/" class="slide-item active">Price age</a></li>
+    </ul>
+  </li>
+</ul>
+{% else %}
+<ul>
+  {% for app in app_list %}
+    <li>
+      <a href="{{ app.app_url }}"><h3>{{ app.name }}</h3></a>
+    </li>
+    {% for model in app.models %}
+      <li class="slide side-menu_align">
+        {% if model.admin_url %}
+          <a class="side-menu__item has-link col-7 pr-0" data-bs-toggle="slide" href="{{ model.admin_url }}"{% if model.admin_url in request.path|urlencode %} aria-current="page"{% endif %}>
+            <span class="side-menu__label">{{ model.name }}</span>
+          </a>
+        {% else %}
+          <a class="side-menu__item has-link col-7 pr-0" data-bs-toggle="slide">
+            <span class="side-menu__label">{{ model.name }}</span>
+          </a>
+        {% endif %}
+
+        {% if model.add_url %}
+          <div class="side-menu__item has-span col-3 pl-0 pr-0">
+            <a href="{{ model.add_url }}">
+              <i class="fa fa-plus-circle" data-bs-toggle="tooltip" title="" data-bs-original-title="fa fa-plus-circle" aria-label="fa fa-plus-circle"></i>
+              Add
+            </a>
+          </div>
+        {% endif %}
+
+        {% if model.admin_url and show_changelinks %}
+          {% if model.view_only %}
+            <span><a href="{{ model.admin_url }}" class="viewlink">{% translate 'View' %}</a></span>
+          {% else %}
+            <span><a href="{{ model.admin_url }}" class="changelink">{% translate 'Change' %}</a></span>
+          {% endif %}
+        {% endif %}
+      </li>
+    {% endfor %}
+  {% endfor %}
+  </ul>
+{% endif %}
+{% else %}
+    <p>{% translate 'You don’t have permission to view or edit anything.' %}</p>
+{% endif %}

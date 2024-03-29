@@ -1,0 +1,18 @@
+{% load i18n %}
+{% load static %}
+<style>
+  summary::marker {
+    display: none;
+  }
+</style>
+<div style="margin-bottom: 10px;">
+  <p style="margin: 0;">
+    {% blocktranslate with filter_title=title %} By {{ filter_title }} {% endblocktranslate %}
+  </p>
+  <select name="forma" onchange="location = this.value;">
+  {% for choice in choices %}
+    <option value="{{ choice.query_string|iriencode }}" {% if choice.selected %} selected{% endif %}>{{ choice.display }}</option>
+  {% endfor %}
+  </select>
+  </ul>
+</div>

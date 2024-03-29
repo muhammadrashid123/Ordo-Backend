@@ -1,0 +1,45 @@
+{
+    "default_shipping_method": "UPS Ground",
+    "shipping_options": {
+        "UPS Ground": {
+            "shipping": "0.0",
+            "shipping_method": "UPS Ground",
+            "shipping_address": "",
+            "shipping_value": ""
+        },
+        "UPS 3 Day Select": {
+            "shipping": "6.99",
+            "shipping_method": "UPS 3 Day Select",
+            "shipping_address": "",
+            "shipping_value": ""
+        },
+        "UPS 2nd Day Air": {
+            "shipping": "7.52",
+            "shipping_method": "UPS 2nd Day Air",
+            "shipping_address": "",
+            "shipping_value": ""
+        },
+        "UPS Next Day Air Saver": {
+            "shipping": "12.35",
+            "shipping_method": "UPS Next Day Air Saver",
+            "shipping_address": "",
+            "shipping_value": ""
+        },
+        "UPS Next Day Air": {
+            "shipping": "13.59",
+            "shipping_method": "UPS Next Day Air",
+            "shipping_address": "",
+            "shipping_value": ""
+        },
+        "UPS Next Day Air Early A.M.": {
+            "shipping": "108.59",
+            "shipping_method": "UPS Next Day Air Early A.M.",
+            "shipping_address": "",
+            "shipping_value": ""
+        }
+    }
+}
+
+
+
+200600,201188,202605,204442,204444,204445,204447,204449,204452,204453,204455,204456,204457,204459,204460,204461,204465,204466,204467,204468,206334,206589,206808,207435,207441,208141,209143,209144,209145,209149,218881,218884,220031,220032,220033,220034,220035,220036,220722,221059,209150,224480,224800,224801,225440,225442,225444,225733,226030,226084,226098,226105,228026,228027,228322,209151,234063,234064,209152,211277,212608,212610,212612,213068,216923,217708,218300,218300,218306,218307,218834,219558,219560,222015,228827

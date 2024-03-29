@@ -1,0 +1,41 @@
+{
+  "default_shipping_method": "UPS 2 Day",
+  "shipping_options": {
+    "UPS 2 Day": {
+      "shipping": "$7.50",
+      "shipping_method": "UPS 2 Day",
+      "shipping_address": "",
+      "shipping_value": "shippingoptions_31"
+    },
+    "Will Call - Pomona, CA": {
+      "shipping": "$0.00",
+      "shipping_method": "Will Call - Pomona, CA",
+      "shipping_address": "",
+      "shipping_value": "shippingoptions_38"
+    },
+    "UPS Overnight": {
+      "shipping": "$20.00",
+      "shipping_method": "UPS Overnight",
+      "shipping_address": "",
+      "shipping_value": "shippingoptions_33"
+    },
+    "UPS Overnight - AM delivery": {
+      "shipping": "$80.00",
+      "shipping_method": "UPS Overnight - AM delivery",
+      "shipping_address": "",
+      "shipping_value": "shippingoptions_34"
+    },
+    "UPS Overnight - Saturday delivery": {
+      "shipping": "$52.00",
+      "shipping_method": "UPS Overnight - Saturday delivery",
+      "shipping_address": "",
+      "shipping_value": "shippingoptions_UD"
+    },
+    "UPS Overnight - AM Saturday delivery": {
+      "shipping": "$110.00",
+      "shipping_method": "UPS Overnight - AM Saturday delivery",
+      "shipping_address": "",
+      "shipping_value": "shippingoptions_38"
+    }
+  }
+}

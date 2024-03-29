@@ -1,0 +1,132 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% load custom_tags %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static "admin/css/dashboard.css" %}">{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block nav-sidebar %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+    <!-- PAGE-HEADER -->
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Dashboard</h1>
+        </div>
+    </div>
+    <!-- PAGE-HEADER END -->
+
+    <!-- ROW-1 -->
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+            {% dashboard_company_card %}
+        </div>
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+            {% dashboard_ordo_order_card %}
+        </div>
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+            {% dashboard_vendor_order_card %}
+        </div>
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+            {% dashboard_vendor_count_card %}
+        </div>
+    </div>
+
+    <!-- ROW-1 END-->
+    <!-- ROW-2 -->
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+            {% dashboard_greetings_card %}
+        </div>
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+            {% dashboard_user_card %}
+        </div>
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+            {% dashboard_order_price_card %}
+        </div>
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+            {% dashboard_available_opendental_key_count_card %}
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+            {% dashboard_waitlist_card %}
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="content-related">
+    <div class="module" id="recent-actions-module">
+        <h2>{% translate 'Recent actions' %}</h2>
+        <h3>{% translate 'My actions' %}</h3>
+            {% load log %}
+            {% get_admin_log 10 as admin_log for_user user %}
+            {% if not admin_log %}
+            <p>{% translate 'None available' %}</p>
+            {% else %}
+            <ul class="actionlist">
+            {% for entry in admin_log %}
+            <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
+                {% if entry.is_deletion or not entry.get_admin_url %}
+                    {{ entry.object_repr }}
+                {% else %}
+                    <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+                {% endif %}
+                <br>
+                {% if entry.content_type %}
+                    <span class="mini quiet">{% filter capfirst %}{{ entry.content_type.name }}{% endfilter %}</span>
+                {% else %}
+                    <span class="mini quiet">{% translate 'Unknown content' %}</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+
+<!-- APEXCHART JS -->
+<script src="{% static 'assets/js/apexcharts.js'%}"></script>
+
+<!-- INTERNAL SELECT2 JS -->
+<script src="{% static 'assets/plugins/select2/select2.full.min.js'%}"></script>
+
+<!-- CHART-CIRCLE JS-->
+<script src="{% static 'assets/js/circle-progress.min.js'%}"></script>
+
+<!-- INTERNAL Data tables js-->
+<script src="{% static 'assets/plugins/datatable/js/jquery.dataTables.min.js'%}"></script>
+<script src="{% static 'assets/plugins/datatable/js/dataTables.bootstrap5.js'%}"></script>
+<script src="{% static 'assets/plugins/datatable/dataTables.responsive.min.js'%}"></script>
+
+<!-- INDEX JS -->
+<script>
+    var chart_data = "{% dashboard_order_chart_data %}";
+</script>
+
+<script src=" {% static 'assets/js/index1.js'%}"></script>
+<!-- MORRIS-CHART JS -->
+<script src=" {% static 'assets/plugins/morris/raphael-min.js' %} "></script>
+<script src=" {% static 'assets/plugins/morris/morris.js' %} "></script>
+<script src=" {% static 'assets/js/morris.js' %} "></script>
+
+<!-- REPLY JS-->
+<script src="{% static 'assets/js/reply.js'%}"></script>
+
+<!-- THEMECOLORS JS -->
+<script src="{% static 'assets/js/themeColors.js'%}"></script>
+
+{% endblock %}

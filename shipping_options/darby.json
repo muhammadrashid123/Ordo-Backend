@@ -1,0 +1,11 @@
+{
+    "default_shipping_method": "Flat Rate Shipping",
+    "shipping_options": {
+        "Flat Rate Shipping": {
+            "shipping": "",
+            "shipping_method": "Flat Rate Shipping",
+            "shipping_address": "",
+            "shipping_value": ""
+        }
+    }
+}

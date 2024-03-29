@@ -1,0 +1,156 @@
+{% extends 'components/base.html' %}
+{% load i18n admin_urls static admin_list %}
+{% block styles %}
+{% endblock %}
+{% block extrastyle %}
+    {{ block.super }}
+    {% comment %} <link rel="stylesheet" href="{% static "admin/css/base.css" %}"> {% endcomment %}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-list{% endblock %}
+
+{% block content %}
+    <!-- PAGE-HEADER -->
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">{{opts.verbose_name_plural}}</h1>
+        </div>
+        {% block object-tools %}
+            <ul class="object-tools">
+            {% block object-tools-items %}
+                {% change_list_object_tools %}
+            {% endblock %}
+            </ul>
+        {% endblock %}
+        {% if cl.formset and cl.formset.errors %}
+            <p class="errornote">
+            {% if cl.formset.total_error_count == 1 %}{% translate "Please correct the error below." %}{% else %}{% translate "Please correct the errors below." %}{% endif %}
+            </p>
+            {{ cl.formset.non_form_errors }}
+        {% endif %}
+    </div>
+    <!-- PAGE-HEADER END -->
+    {% if messages %}
+    <ul class="messages" style="display: none;">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body project-list-table-container" id="changelist">
+                    <div class="table-responsive dataTables_wrapper changelist-form-container">
+                        {% block search %}{% search_form cl %}{% endblock %}
+                        {% block filters %}
+                            {% if cl.has_filters %}
+                            <div id="changelist-filter">
+                                {% if cl.has_active_filters %}<h4 id="changelist-filter-clear">
+                                <a href="{{ cl.clear_all_filters_qs }}">&#10006; {% translate "Clear all filters" %}</a>
+                                </h4>{% endif %}
+                                <div>
+                                    {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endblock %}
+                        <form id="changelist-form" method="post"{% if cl.formset and cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>{% csrf_token %}
+                            {% if cl.formset %}
+                                <div>{{ cl.formset.management_form }}</div>
+                            {% endif %}
+                            {% block result_list %}
+                                <!-- {% if action_form and actions_on_top and cl.show_admin_actions %}{% admin_actions %}{% endif %} -->
+                                {% result_list cl %}
+                                <!-- {% if action_form and actions_on_bottom and cl.show_admin_actions %}{% admin_actions %}{% endif %} -->
+                            {% endblock %}
+                        </form>
+                    </div>
+                    {% block pagination %}{% pagination cl %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <!-- SELECT2 JS -->
+    <script src=" {% static 'assets/plugins/select2/select2.full.min.js' %} "></script>
+
+    <!-- INTERNAL Notifications js -->
+    <script src="{% static 'assets/plugins/notify/js/rainbow.js'%}"></script>
+    <script src="{% static 'assets/plugins/notify/js/jquery.growl.js'%}"></script>
+    <script src="{% static 'assets/plugins/notify/js/notifIt.js'%}"></script>
+
+    <!-- THEMECOLORS JS -->
+    <script src="{% static 'assets/js/themeColors.js'%}"></script>
+
+    <script>
+        $(function(){
+            $('#confirm_text').val('')
+        });
+
+        $('.pop_del_obj').click(function(){
+            $('#del_obj_pk').val($(this).closest("tr")[0].children[0].children[0].value)
+
+            is_company = $('#model_name').val() == "company"
+            $('#btn_confirm_delete').prop('disabled', is_company);
+            $('#company_fields').css('display', is_company ? 'block' : 'none');
+        })
+
+        $('#confirm_text').on('input', function(val){
+            is_confirm = this.value == "permanently delete";
+            $('#btn_confirm_delete').prop('disabled', !is_confirm);
+        })
+
+        $('#btn_cancel_delete').click(function(){
+            $('#confirm_text').val('')
+        })
+
+        $('.success_relink').each(function(i, el){
+            notif({
+                msg: "Relink success",
+                type: "success"
+            });
+        })
+
+        $('.fail_relink').each(function(i, el){
+            notif({
+                msg: "<b>Fail:</b> Vendor link failed with the given credential",
+                type: "warning",
+            });
+        })
+
+        $('.btn-relink-vendor').click(function(){
+            event.preventDefault();
+            if($(this).hasClass('logging-in'))
+                return;
+            this.innerHTML = '<i class="fa fa-spinner fa-spin"></i>Relinking';
+            $(this).addClass('logging-in')
+            const csrfToken = $('input[name="csrfmiddlewaretoken"]').val()
+            const username = $(this).closest("td").siblings(".field-edit_username").find("input").val();
+            const password = $(this).closest("td").siblings(".field-edit_password").find("input").val();
+            const originurl = window.location.href
+            const url = $(this).attr('href');
+            $.ajax({
+                url: window.location.origin +url,
+                type:"POST",
+                headers: {
+                    'X-CSRFToken': csrfToken
+                },
+                data:{username: username, password: password},
+                success: function(msg){
+                    window.location = originurl;
+                },
+                error: function(msg) {
+                    $('.btn-relink-vendor').text('Relink Vendor');
+                    $('.btn-relink-vendor').removeClass('logging-in');
+                    alert("Something wrong with the given form data.");
+                }
+            });
+        })
+    </script>
+
+{% endblock %}

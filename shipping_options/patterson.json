@@ -1,0 +1,23 @@
+{
+  "default_shipping_method": "Standard ($11.99)",
+  "shipping_options": {
+    "Standard ($11.99)": {
+      "shipping_address": "4760 w mineral ave\nste 60\nlittleton, CO 80128-2540\nUS",
+      "shipping_method": "Standard ($11.99)",
+      "shipping": "$11.99",
+      "shipping_value": "GR"
+    },
+    "Second Day Air ($26.99)": {
+      "shipping_address": "4760 w mineral ave\nste 60\nlittleton, CO 80128-2540\nUS",
+      "shipping_method": "Second Day Air ($26.99)",
+      "shipping": "$26.99",
+      "shipping_value": "2A"
+    },
+    "Next Day Air ($52.99)": {
+      "shipping_address": "4760 w mineral ave\nste 60\nlittleton, CO 80128-2540\nUS",
+      "shipping_method": "Next Day Air ($52.99)",
+      "shipping": "$52.99",
+      "shipping_value": "1A"
+    }
+  }
+}

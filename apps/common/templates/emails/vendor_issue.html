@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Issue</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+    .card-table-wrapper {
+      padding: 60px 55px 60px;
+    }
+    @media only screen and (max-device-width: 620px) {
+      .card-table-wrapper {
+        padding: 30px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <table cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+    <tr>
+      <td style="background-color: #ebf4f8; padding: 0 16px;">
+        <table cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; margin: 28px auto;">
+          <tr>
+            <td style="text-align: center;">
+              <img src="https://cdn.joinordo.com/emails/images/logo.png" alt="" style="width: 150px; height: 40px; margin: 0 0 30px 0px;">
+            </td>
+          </tr>
+          <tr>
+            <td style="border-radius: 8px; background-color: #fff;" class="card-table-wrapper">
+              <p style="font-weight: bold; font-size: 20px; font-stretch: normal; font-style: normal; line-height: 1.5; letter-spacing: normal; text-align: center; color: #333;">Vendor Issue</p>
+              <p style="font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; color: rgba(44, 44, 44, 0.5)">Dear {{customer_name}},</p>
+              <p style="font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; color: rgba(44, 44, 44, 0.5)">Our team has identified an issue with your order #{{order_number}} from {{vendor_name}} placed on {{order_date}}.</p>
+              <p style="font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; color: rgba(44, 44, 44, 0.5)">We recommend you contact the vendor directly to get this issue resolved. Sometimes issues that delay processing include:</p>
+              <ul>
+                <li style="font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; color: rgba(44, 44, 44, 0.5)">expired dental licenses</li>
+                <li style="font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; color: rgba(44, 44, 44, 0.5)">expired credit cards</li>
+                <li style="font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; color: rgba(44, 44, 44, 0.5)">issues with shipping addresses</li>
+                <li style="font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; color: rgba(44, 44, 44, 0.5)">outstanding balances on account</li>
+              </ul>
+              <p style="font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; line-height: 1.83; letter-spacing: normal; color: rgba(44, 44, 44, 0.5)">Thank you for using Ordo!</p>
+              <a href="{{vendor_url}}" style="display: block; width: auto; max-width: 160px; height: 35px; margin: 40px auto 0 auto; padding: 2px 15px 2px 16px; border-radius: 4px; background-color: #49a2cb; font-weight: bold; font-size: 13px; font-stretch: normal; font-style: normal; line-height: 2.4; letter-spacing: 0.4px; text-align: center; color: #fff; text-decoration: none;">Go to Vendor Site</a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

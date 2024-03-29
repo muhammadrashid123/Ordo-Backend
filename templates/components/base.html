@@ -1,0 +1,120 @@
+{% load static %}
+{% load i18n static %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
+
+<head>
+
+    <!-- META DATA -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Noa – Bootstrap 5 Admin & Dashboard Template">
+    <meta name="author" content="Spruko Technologies Private Limited">
+    <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
+
+    <!-- TITLE -->
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
+
+    {% block extrastyle %}{% endblock %}
+    {% if LANGUAGE_BIDI %}<link rel="stylesheet" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}
+    {% block extrahead %}{% endblock %}
+    {% block responsive %}
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="{% static "admin/css/responsive.css" %}">
+        {% if LANGUAGE_BIDI %}<link rel="stylesheet" href="{% static "admin/css/responsive_rtl.css" %}">{% endif %}
+    {% endblock %}
+    {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE">{% endblock %}
+    {% include 'components/layouts/styles.html' %}
+    {% block styles %}{% endblock %}
+
+</head>
+
+<body class="{% if is_popup %}popup {% endif %}app horizontal-hover light-mode"
+  data-admin-utc-offset="{% now "Z" %}">
+
+    <!-- SWITCHER -->
+    {% include 'components/layouts/switcher.html' %}
+    <!-- SWITCHER END-->
+
+    <!-- GLOBAL-LOADER -->
+    <div id="global-loader">
+        <img src="{% static 'assets/images/loader.svg'%}" class="loader-img" alt="Loader">
+    </div>
+    <!-- GLOBAL-LOADER END -->
+
+    <!-- PAGE -->
+	<div class="page">
+		<div class="page-main">
+            <!-- APP-HEADER -->
+            {% include 'components/layouts/app-header.html' %}
+            {% include "components/layouts/app-sidebar.html" %}
+            <!--app-content open-->
+			<div class="app-content main-content mt-0">
+				<div class="side-app">
+
+					 <!-- CONTAINER -->
+					 <div class="main-container container-fluid">
+
+                        {% block content %}{% endblock %}
+
+                    </div>
+                        <!-- MAIN-CONTAINER END -->
+                </div>
+            </div>
+                    <!-- APP-CONTENT END -->
+        </div>
+            <!-- PAGE-MAIN END -->
+
+        {% block modal %}{% endblock %}
+
+        <!-- MODAL -->
+        {% include 'components/layouts/modal.html' %}
+
+        <!-- FOOTER -->
+        {% include 'components/layouts/footer.html' %}
+
+    </div>
+    <!-- PAGE END -->
+
+    <!-- BASIC MODAL -->
+    <div class="modal fade"  id="modal_confirm_delete">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h6 class="modal-title">Are you sure?</h6><button aria-label="Close" class="btn-close" data-bs-dismiss="modal" ><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete the selected {{ opts.model_name }}? All of the following objects and their related items will be deleted.</p>
+                    <div id="company_fields">
+                        <p>To confirm deletion, type <i>permanently delete</i> in the text input field.</p>
+                        <input id="confirm_text" type="text" name="confirm_text" style="width: 100%;">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <form id="form_delete_confirm" method="post">
+                        {% csrf_token %}
+                        <div>
+                            <input type="hidden" name="_selected_action" value="" id="del_obj_pk">
+                            <input type="hidden" name="action" value="delete_selected">
+                            <input type='hidden' id="model_name" value="{{opts.model_name}}">
+                            <input type="hidden" name="post" value="yes">
+                            <input id="btn_confirm_delete" type="submit" class="btn btn-primary" value="Confirm" disabled>
+                            <a id="btn_cancel_delete" class="btn btn-light" data-bs-dismiss="modal">Close</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    {% include 'components/layouts/scripts.html' %}
+    {% block scripts %}{% endblock %}
+    
+</body>
+
+</html>
